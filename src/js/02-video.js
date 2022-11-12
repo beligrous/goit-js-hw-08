@@ -19,19 +19,21 @@ player.on('timeupdate', throttle(onPlay, 1000));
 
 let seconds = localStorage.getItem('videoplayer - current - time');
 
-player
-  .setCurrentTime()
-  .then(function (seconds) {
-    // seconds = the actual time that the player seeked to
-  })
-  .catch(function (error) {
-    switch (error.name) {
-      case 'RangeError':
-        // the time was less than 0 or greater than the video’s duration
-        break;
+document.addEventListener('DOMContentLoaded', onSiteReload);
 
-      default:
-        // some other error occurred
-        break;
-    }
-  });
+function onSiteReload() {
+  player
+    .setCurrentTime()
+    .then(function (seconds) {})
+    .catch(function (error) {
+      switch (error.name) {
+        case 'RangeError':
+          // the time was less than 0 or greater than the video’s duration
+          break;
+
+        default:
+          // some other error occurred
+          break;
+      }
+    });
+}
