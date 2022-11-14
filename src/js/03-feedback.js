@@ -15,8 +15,9 @@ function onInputSaveData(e) {
 }
 
 function onSiteReload() {
-  if (localStorage.getItem('feedback-form-state')) {
-    let storageData = JSON.parse(localStorage.getItem('feedback-form-state'));
+  let getDataItem = localStorage.getItem('feedback-form-state');
+  if (getDataItem) {
+    let storageData = JSON.parse(getDataItem);
     emailElem.value = storageData.email;
     messageElem.value = storageData.message;
   }
@@ -24,7 +25,7 @@ function onSiteReload() {
 
 function onSubmitClick(e) {
   e.preventDefault();
-  console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+  console.log(JSON.parse(getDataItem));
   localStorage.removeItem('feedback-form-state');
   emailElem.value = '';
   messageElem.value = '';

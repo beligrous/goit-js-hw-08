@@ -9,7 +9,7 @@ player.getVideoTitle().then(function (title) {
 });
 
 const onPlay = function (data) {
-  let timing = localStorage.setItem(
+  localStorage.setItem(
     'videoplayer-current-time',
     JSON.stringify(data.seconds)
   );
@@ -18,4 +18,6 @@ const onPlay = function (data) {
 player.on('timeupdate', throttle(onPlay, 1000));
 
 let seconds = JSON.parse(localStorage.getItem('videoplayer-current-time'));
-player.setCurrentTime(seconds);
+if (seconds) {
+  player.setCurrentTime(seconds);
+}
