@@ -6,6 +6,7 @@ const messageElem = document.querySelector('.feedback-form textarea');
 formElem.addEventListener('input', throttle(onInputSaveData, 500));
 formElem.addEventListener('submit', onSubmitClick);
 document.addEventListener('DOMContentLoaded', onSiteReload);
+let getDataItem = localStorage.getItem('feedback-form-state');
 
 function onInputSaveData(e) {
   const data = {};
@@ -15,7 +16,6 @@ function onInputSaveData(e) {
 }
 
 function onSiteReload() {
-  let getDataItem = localStorage.getItem('feedback-form-state');
   if (getDataItem) {
     let storageData = JSON.parse(getDataItem);
     emailElem.value = storageData.email;
